@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Add New Doctor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style></style>
+  </head>
+  <body class="container">
+    <div class="menu-bar">
+      <ul>
+        <li>
+          <a href="#"></a>
+          <a href="Admin_Homepage.html"
+            ><i class="fa fa-home" aria-hidden="true"></i>HOME</a
+          >
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-users" aria-hidden="true"></i>PATIENTS</a>
+          <div class="submenu1">
+            <ul>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_ViewPatients.html">View Patients</a>
+              </li>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_AddNewPatients.html">Add New Patients</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fa fa-stethoscope" aria-hidden="true"></i>DOCTORS</a
+          >
+          <div class="submenu1">
+            <ul>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_ViewDoctors.html">View Doctors</a>
+              </li>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_AddNewDoctors.html">Add New Doctors</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form id="form">
+      <div>
+        <div class="new-doctor-firstname">
+          <label> First Name </label>
+          <input type="text" class="input" id="first" />
+        </div>
+        <div class="new-doctor-middlename">
+          <label> Middle Name </label>
+          <input type="text" class="input" id="middle" />
+        </div>
+        <div class="new-doctor-lastname">
+          <label> Last Name </label>
+          <input type="text" class="input" id="last" />
+        </div>
+        <div class="new-doctor-gender">
+          <label> Gender </label>
+          <input type="text" class="input" id="gender" />
+        </div>
+        <div class="new-doctor-birthdate">
+          <label> Birthdate </label>
+          <input type="text" class="input" placeholder="(MM/DD/YY)" id="bday" />
+        </div>
+        <div class="new-doctor-address">
+          <label> Address </label>
+          <input type="text" class="input" id="address" />
+        </div>
+        <div class="new-doctor-phonenumber">
+          <label> Phone Number </label>
+          <input type="text" class="input" id="phone" />
+        </div>
+        <div class="new-doctor-specialization">
+          <label> Specialization </label>
+          <input type="text" class="input" id="spe" />
+        </div>
+        <div class="new-doctor-rollno">
+          <label> Roll Number </label>
+          <input type="text" class="input" id="roll" />
+        </div>
+        <button id="submit" class="add-doctor-button">Add Doctor</button>
+        <button class="clear-form-button1">Clear Form</button>
+      </div>
+    </form>
+
+    <p class="message">Add New Doctor</p>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+      import {
+        getDatabase,
+        ref,
+        set,
+      } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+        authDomain: "admin-data-ad9df.firebaseapp.com",
+        databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+        projectId: "admin-data-ad9df",
+        storageBucket: "admin-data-ad9df.appspot.com",
+        messagingSenderId: "89242972927",
+        appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+        measurementId: "G-94LFR4H8C1",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase(app);
+    
+
+      document.getElementById("form").addEventListener("submit", (e) => {
+        const first = document.getElementById("first").value;
+        const middle = document.getElementById("middle").value;
+        const last = document.getElementById("last").value;
+        const gender = document.getElementById("gender").value;
+        const bday = document.getElementById("bday").value;
+        const address = document.getElementById("address").value;
+        const phone = document.getElementById("phone").value;
+        const specialization = document.getElementById("spe").value;
+        const rollno = document.getElementById("roll").value;
+        e.preventDefault();
+
+        console.log(first);
+
+        writeUserData(first,middle,last,gender,bday,address,phone,specialization,rollno)
+
+        alert("Complete");
+      });
+
+      function writeUserData(first, middle, last,gender,bday,address,phone,specialization,rollno) {
+        set(ref(db, "Doctor's Info/" + rollno), {
+          First_name: first,
+          Middle_name: middle,
+          Last_Name: last,
+          Gender: gender,
+          Birthday: bday,
+          Address: address,
+          Phone: phone,
+          Specialization: specialization,
+          Roll_Number: rollno,
+          
+        });
+      }
+    </script>
+  </body>
+</html>

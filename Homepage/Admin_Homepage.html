@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+    <meta name="viewport" content="width=device-width, initial-scale-1,0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style></style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="menu-bar">
+      <ul>
+        <li>
+          <a href="#"></a>
+          <a href="Admin_Homepage.html"
+            ><i class="fa fa-home" aria-hidden="true"></i>HOME</a
+          >
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-users" aria-hidden="true"></i>PATIENTS</a>
+          <div class="submenu1">
+            <ul>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_ViewPatients.html">View Patients</a>
+              </li>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_AddNewPatients.html">Add New Patients</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <a href="#"
+            ><i class="fa fa-stethoscope" aria-hidden="true"></i>DOCTORS</a
+          >
+          <div class="submenu1">
+            <ul>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_ViewDoctors.html">View Doctors</a>
+              </li>
+              <li>
+                <a href="#"></a>
+                <a href="Admin_AddNewDoctors.html">Add New Doctors</a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <table class="table table-dark">
+      <!-- Doctors List-->
+      <thead>
+        <th> Roll No </th>
+        <th> Appointment Date </th>
+        <th> Type of Service </th>
+        <th> Allergies </th>
+        <th> Special Instructions </th>
+        <th> First Name </th>
+        <th> Last Name </th>
+        <th> Email </th>
+        
+      </thead>
+      <tbody id="tbody1">
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Control Panel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class = "labs"> Name: </label>
+          <input type ="text" id = "FirstNameMod"> <br>
+          <label class = "labs"> Middle Name: </label>
+          <input type ="text" id = "MiddleNameMod"> <br>
+          <label class = "labs"> Last Name: </label>
+          <input type ="text" id = "LastNameMod"> <br>
+          <label class = "labs"> Phone Number: </label>
+          <input type ="text" id = "PhoneNumberMod"> <br>
+          <label class = "labs"> Allergies: </label>
+          <input type ="text" id = "AllergiesMod"> <br>
+          <label class = "labs"> Medical History: </label>
+          <input type ="text" id = "MedHistoryMod"> <br>
+          <label class = "labs"> Roll Number: </label>
+          <input type ="text" id = "RollNoMod"> <br>
+          
+        </div>
+        <div class="modal-footer">
+          <button id= "AddMod" type="submit" class="btn btn-primary" onclick="AddStd()"> Add New Record </button>
+          <button id= "UpMod" type="submit" class="btn btn-success" onclick="UpdStd()"> Update Record </button>
+          <button id= "DelMod" type="submit" class="btn btn-danger" onclick="DelStd()"> Delete Record </button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+    <p class="message"></p>
+
+    <script type="module">
+    
+
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+      import { getDatabase, ref, child, onValue, get, set, update, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+  
+      const firebaseConfig = {
+        apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+        authDomain: "admin-data-ad9df.firebaseapp.com",
+        databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+        projectId: "admin-data-ad9df",
+        storageBucket: "admin-data-ad9df.appspot.com",
+        messagingSenderId: "89242972927",
+        appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+        measurementId: "G-94LFR4H8C1"
+      };
+  
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const db = getDatabase(app);
+
+    var list = [];
+    var no = 0;
+    var tbody = document.getElementById('tbody1');
+    function AddItemToTable(appointment, typeofservice, allergies, specialInst, firstName, lastName, Email) {
+      let trow = document.createElement("tr");
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+      let td3 = document.createElement("td");
+      let td4 = document.createElement("td");
+      let td5 = document.createElement("td");
+      let td6 = document.createElement("td");
+      let td7 = document.createElement("td");
+      let td8 = document.createElement("td");
+      
+
+      list.push([appointment, typeofservice, allergies, specialInst, firstName, lastName, Email]);
+      td1.innerHTML = ++no;
+      td2.innerHTML = appointment;
+      td3.innerHTML = typeofservice;
+      td4.innerHTML = allergies;
+      td5.innerHTML = specialInst;
+      td6.innerHTML = firstName;
+      td7.innerHTML = lastName;
+      td8.innerHTML = Email;      
+
+      trow.appendChild(td1);  
+      trow.appendChild(td2);
+      trow.appendChild(td3);
+      trow.appendChild(td4);
+      trow.appendChild(td5);
+      trow.appendChild(td6);
+      trow.appendChild(td7);
+      trow.appendChild(td8);
+        
+      tbody.appendChild(trow);
+    }
+
+      var ModAppointment = document.getElementById('AppointmentMod');
+      var ModTypeOfService = document.getElementById('TypeOfServiceMod');
+      var ModAllergies = document.getElementById('AllergiesMod');
+      var ModSpecialInstruction = document.getElementById('SpecialInstructionMod');
+      var ModName = document.getElementById('NameMod');
+      var ModEmail = document.getElementById('EmailMod');
+
+      function AddAllItemsToTable(TheBookings) {
+      no = 0;
+      tbody.innerHTML = "";
+      TheBookings.forEach(element => {
+        AddItemToTable(element.Date_Booking, element.Service,
+         element.Allergies, element.Special, 
+         element.First_Name, element.Last_Name, element.Email);
+      });
+    }
+
+    // -------------------- get data ----------------//
+
+    function GetAllDataOnce() {
+      const dbRef = ref(db);
+
+      get(child(dbRef, "BookingInfo"))
+        .then((snapshot) => {
+          var bookings = [];
+          snapshot.forEach(childSnapshot => {
+            bookings.push(childSnapshot.val());
+          });
+          AddAllItemsToTable(bookings);
+        });
+    }
+
+    function GetAllDataRealtime() {
+      const dbRef = ref(db, "BookingInfo");
+      onValue(dbRef, (snapshot) => {
+        var bookings = [];
+        snapshot.forEach(childSnapshot => {
+          bookings.push(childSnapshot.val());
+        });
+        AddAllItemsToTable(bookings);
+      })
+    }
+
+    window.onload = GetAllDataRealtime;
+      </script>
+  </body>
+</html>

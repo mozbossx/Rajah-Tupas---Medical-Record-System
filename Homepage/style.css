@@ -1,0 +1,736 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: aliceblue;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width: 100%;
+    height: auto;
+    overflow-y: auto;
+
+    font-family: 'inter';
+
+}
+
+.container{
+    height: 850px;
+}
+
+.menu-bar {
+    background: #184f6f;
+    text-align: center;
+    z-index: 999;
+}
+
+.menu-bar ul {
+    display: flex;
+    list-style: none;
+    color: white;
+    z-index: 999;
+}
+
+.menu-bar ul li {
+    height: 12%;
+    margin: 15px;
+    padding: 5px;
+}
+
+.menu-bar ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.active,
+.menu-bar ul li:hover {
+    background: #0C2830;
+    border-radius: 8px;
+    z-index: 999;
+}
+
+.menu-bar .fa {
+    margin-right: 10px;
+}
+
+.submenu1 {
+    display: none;
+}
+
+.menu-bar ul li:hover .submenu1 {
+    display: block;
+    position: absolute;
+    background: #0C2830;
+    margin-top: -2px;
+    margin-left: -5px;
+    border-radius: 0px 15px 15px 15px;
+}
+
+.menu-bar ul li:hover .submenu1 ul {
+    display: block;
+    margin: 0%;
+}
+
+.menu-bar ul li:hover .submenu1 ul li {
+    width: 120px;
+    padding: 0;
+    border-bottom: 1px dotted none;
+    background: transparent;
+    border-radius: 0;
+    text-align: left;
+}
+
+.menu-bar ul li:hover .submenu1 ul li a:hover {
+    color: #72A2FF;
+}
+
+.message {
+    top: 11%;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    line-height: 58px;
+    color: black;
+    z-index: -999;
+
+}
+
+.wrapper {
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #184f6f;
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .input {
+    width: 88%;
+    padding: 10px 10px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.searchbtn {
+    background: #184f6f;
+    width: 10%;
+
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+}
+
+.searchbtn:hover {
+    color: #72A2FF;
+}
+
+.add-person {
+    background: #184f6f;
+    width: 10%;
+
+    text-align: center;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+    font-weight: bold;
+    font-size: 35px;
+    color: white;
+}
+
+.add-person:hover {
+    color: #72A2FF;
+}
+
+table {
+    width: auto;
+    background-color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 85px;
+    font-size: 18px;
+    border: #184f6f;
+}
+
+th {
+    background: #184f6f;
+    color: white;
+    width: auto;
+    height: 5px;
+    text-align: left;
+    
+}
+
+table th{
+    position: sticky;
+    top:0px;
+    border: #184f6f;
+}
+
+table,
+th,
+td {
+    border: 2px solid #184f6f;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 5px;
+}
+
+table tr:hover td {
+    background-color: aliceblue;
+}
+
+table tbody {
+    width: auto;
+    display: inline-block;
+    height: 450px;
+    overflow-y: scroll;
+
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #979899;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #d2d2d2;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+caption {
+    font-size: 30px;
+    color: black;
+}
+
+.hashtag {
+    text-align: center;
+}
+
+.patient-details {
+    background: #184f6f;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.patient-details:hover {
+    background: #72A2FF;
+    color: black;
+}
+
+.patient-delete {
+    background: #902323;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.patient-delete:hover {
+    background: #ff4848;
+    color: black;
+}
+
+.new-patient-firstname {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+
+}
+
+.new-patient-firstname input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+
+.new-patient-middlename {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-middlename .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+
+.new-patient-lastname {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-lastname .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-patient-gender {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-gender .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+
+.new-patient-birthdate {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-birthdate .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+
+.new-patient-address {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-address .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-patient-phonenumber {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-patient-phonenumber .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-patient-allergies {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+    bottom: 100px;
+}
+
+.new-patient-allergies .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-patient-medicalhistory {
+    position: absolute;
+    top: 710px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+    bottom: 100px;
+}
+
+.new-patient-medicalhistory .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-patient-rollnumber {
+    position: absolute;
+    top: 780px;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+    bottom: 100px;
+}
+
+.new-patient-rollnumber .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+
+.new-doctor-firstname {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+
+}
+
+.new-doctor-firstname input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-middlename {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-middlename .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-lastname {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-lastname .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-gender {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-gender .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-birthdate {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-birthdate .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-address {
+    position: absolute;
+    top: 75%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-address .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-phonenumber {
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+}
+
+.new-doctor-phonenumber .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.new-doctor-specialization {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 400px;
+    width: 100%;
+    padding: 10px;
+    height: 60px;
+    border-radius: 10px;
+    bottom: 100px;
+}
+
+.new-doctor-specialization .input {
+    width: 100%;
+    padding: 5px 5px;
+    border-radius: 5px;
+    outline: none;
+    font-size: large;
+    color: #0c2830;
+}
+
+.add-doctor-button{
+    position: relative;
+    top: 620px;
+    background: #184f6f;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    left: 46%;
+    margin: 10px;
+    padding: 4px;
+}
+
+.add-doctor-button:hover {
+    background: #72A2FF;
+    color: black;
+}
+
+.add-patient-button{
+    position: relative;
+    top: 780px;
+    background: #184f6f;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    left: 46%;
+    margin: 10px;
+    padding: 4px;
+}
+
+.add-patient-button:hover {
+    background: #72A2FF;
+    color: black;
+}
+
+.clear-form-button{
+    position: relative;
+    top: 780px;
+    background: rgb(216, 75, 75);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    left: 46.2%;
+    margin: 10px;
+    padding: 4px;
+}
+
+.clear-form-button1{
+    position: relative;
+    top: 620px;
+    background: rgb(216, 75, 75);
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    left: 46.2%;
+    margin: 10px;
+    padding: 4px;
+}
+
+.clear-form-button:hover {
+    background: red;
+    color: black;
+}
+
+.clear-form-button1:hover {
+    background: red;
+    color: black;
+}

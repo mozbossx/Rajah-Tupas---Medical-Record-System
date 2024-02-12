@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale-1,0" />
+  <title>View Doctors</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
+  <style>
+    .labs {
+      display: inline-block;
+      width: 100px;
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+
+<body>
+  <div class="menu-bar">
+    <ul>
+      <li>
+        <a href="#"></a>
+        <a href="Admin_Homepage.html"><i class="fa fa-home" aria-hidden="true"></i>HOME</a>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-users" aria-hidden="true"></i>PATIENTS</a>
+        <div class="submenu1">
+          <ul>
+            <li>
+              <a href="#"></a>
+              <a href="Admin_ViewPatients.html">View Patients</a>
+            </li>
+            <li>
+              <a href="#"></a>
+              <a href="Admin_AddNewPatients.html">Add New Patients</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li>
+        <a href="#"><i class="fa fa-stethoscope" aria-hidden="true"></i>DOCTORS</a>
+        <div class="submenu1">
+          <ul>
+            <li>
+              <a href="#"></a>
+              <a href="Admin_ViewDoctors.html">View Doctors</a>
+            </li>
+            <li>
+              <a href="#"></a>
+              <a href="Admin_AddNewDoctors.html">Add New Doctors</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <table class="table table-dark">
+    <!-- Doctors List -->
+    <thead>
+      <th> ID</th>
+      <th> First Name</th>
+      <th> Last Name</th>
+      <th> Middle Name</th>
+      <th> Phone</th>
+      <th>Specialization</th>
+      <th>Roll No</th>
+      <th>Control Center</th>
+    </thead>
+    <tbody id="tbody1">
+    </tbody>
+  </table>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Control Panel</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="labs">First Name</label>
+          <input type="text" id="FirstMod"> <br>
+
+          <label class="labs">Last Name</label>
+          <input type="text" id="LastMod"> <br>
+
+          <label class="labs">Middle Name</label>
+          <input type="text" id="MiddleMod"> <br>
+
+          <label class="labs">Phone</label>
+          <input type="text" id="PhoneMod"> <br>
+
+          <label class="labs">Specialization</label>
+          <input type="text" id="SpeMod"> <br>
+
+          <label class="labs">Roll No</label>
+          <input type="text" id="RollMod"> <br>
+
+        </div>
+        <div class="modal-footer">
+          <button id="AddModBtn" type="button" class="btn btn-primary" onclick="AddStd()">Add New Record</button>
+          <button id="UpdModBtn" type="button" class="btn btn-success" onclick="UpdStd()">Update Record</button>
+          <button id="DelModBtn" type="button" class="btn btn-danger" onclick="DelStd()">Delete Record</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+  <script type="module">
+
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+    import { getDatabase, ref, child, onValue, get, set, update, remove } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+      authDomain: "admin-data-ad9df.firebaseapp.com",
+      databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+      projectId: "admin-data-ad9df",
+      storageBucket: "admin-data-ad9df.appspot.com",
+      messagingSenderId: "89242972927",
+      appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+      measurementId: "G-94LFR4H8C1"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const db = getDatabase(app);
+
+    //---- Filling the table ------ //
+    var docList = [];
+    var no = 0;
+    var tbody = document.getElementById('tbody1');
+
+    function AddItemToTable(first, middle, last, phone, spe,rollNo) {
+      let trow = document.createElement("tr");
+      let td1 = document.createElement("td");
+      let td2 = document.createElement("td");
+      let td3 = document.createElement("td");
+      let td4 = document.createElement("td");
+      let td5 = document.createElement("td");
+      let td6 = document.createElement("td");
+      let td7 = document.createElement("td");
+
+      docList.push([first, middle, last, phone, spe,rollNo]);
+
+      td1.innerHTML = ++no;
+      td2.innerHTML = first;
+      td3.innerHTML = middle;
+      td4.innerHTML = last;
+      td5.innerHTML = phone;
+      td6.innerHTML = spe;
+      td7.innerHTML = rollNo;
+
+      trow.appendChild(td1);
+      trow.appendChild(td2);
+      trow.appendChild(td3);
+      trow.appendChild(td4);
+      trow.appendChild(td5);
+      trow.appendChild(td6);
+      trow.appendChild(td7);
+
+      var ControlDiv = document.createElement("div");
+
+      ControlDiv.innerHTML = '<button type="button" class="btn btn-primary my-2" data-toggle="modal" data-target="#exampleModalCenter" onClick="FillTboxes(null)">Add New Record </button>'
+      ControlDiv.innerHTML += '<button type="button" class="btn btn-primary my-2 ml-2" data-toggle="modal" data-target="#exampleModalCenter" onClick="FillTboxes(' + no + ')">Edit Record </button>'
+
+      trow.appendChild(ControlDiv);
+      tbody.appendChild(trow);
+
+    }
+    var ModFirst = document.getElementById('FirstMod');
+    var ModLast = document.getElementById('LastMod');
+    var ModMiddle = document.getElementById('MiddleMod');
+    var ModPhone = document.getElementById('PhoneMod');
+    var ModSpe = document.getElementById('SpeMod');
+    var ModRoll = document.getElementById('RollMod');
+  
+
+    var BTNmodAdd = document.getElementById('AddModBtn');
+    var BTNmodUpd = document.getElementById('UpdModBtn');
+    var BTNmodDel = document.getElementById('DelModBtn');
+
+    window.FillTboxes = (index) => {
+
+      if (index == null) {
+        ModFirst.value = "";
+        ModLast.value = "";
+        ModMiddle.value = "";
+        ModPhone.value = "";
+        ModSpe.value = "";
+        ModRoll.value="";
+        BTNmodAdd.style.display = 'inline-block';
+        BTNmodUpd.style.display = 'none';
+        BTNmodDel.style.display = 'none';
+      }
+      else {
+        --index;
+        ModFirst.value = docList[index][0];
+        ModLast.value = docList[index][1];
+        ModMiddle.value = docList[index][2];
+        ModPhone.value = docList[index][3];
+        ModSpe.value = docList[index][4];
+        ModRoll.value = docList[index][5];
+  
+        BTNmodAdd.style.display = 'none';
+        BTNmodUpd.style.display = 'inline-block';
+        BTNmodDel.style.display = 'inline-block';
+      }
+    }
+
+    window.AddStd = () => {
+
+      set(ref(db, "Doctor's Info/" + ModRoll.value), {
+        First_name: ModFirst.value,
+        Middle_name: ModMiddle.value,
+        Last_Name: ModLast.value,
+        Phone: ModPhone.value,
+        Specialization: ModSpe.value,
+        Roll_Number: ModRoll.value,
+      })
+        .then(() => {
+          // Data saved successfully!
+          alert("Complete");
+          GetAllDataRealtime();
+        })
+        .catch((error) => {
+          alert("Failed");
+        });
+    }
+
+    window.UpdStd = () => {
+
+      update(ref(db, "Doctor's Info/" + ModRoll.value), {
+        First_name: ModFirst.value,
+        Middle_name: ModMiddle.value,
+        Last_Name: ModLast.value,
+        Phone: ModPhone.value,
+        Specialization: ModSpe.value,
+      })
+        .then(() => {
+          // Data saved successfully!
+          alert("Complete");
+          GetAllDataRealtime();
+        })
+        .catch((error) => {
+          alert("Failed");
+        });
+    }
+    window.DelStd = () => {
+
+      remove(ref(db, "Doctor's Info/" + ModRoll.value))
+      .then(() => {
+          // Data saved successfully!
+          alert("Deleted Complete");
+          GetAllDataRealtime();
+        })
+        .catch((error) => {
+          alert("Failed");
+        });
+    }
+
+    function AddAllItemsToTable(TheDoctor) {
+      no = 0;
+      tbody.innerHTML = "";
+      TheDoctor.forEach(element => {
+        AddItemToTable(element.First_name, element.Last_Name, element.Middle_name, element.Phone, element.Specialization,element.Roll_Number);
+      });
+
+    }
+    // -------------------- get data ----------------//
+
+    function GetAllDataOnce() {
+      const dbRef = ref(db);
+
+      get(child(dbRef, "Doctor's Info"))
+        .then((snapshot) => {
+          var doctors = [];
+          snapshot.forEach(childSnapshot => {
+            doctors.push(childSnapshot.val());
+          });
+          AddAllItemsToTable(doctors);
+        });
+
+    }
+    function GetAllDataRealtime() {
+
+      const dbRef = ref(db, "Doctor's Info");
+
+      onValue(dbRef, (snapshot) => {
+        var doctors = [];
+
+        snapshot.forEach(childSnapshot => {
+          doctors.push(childSnapshot.val());
+        });
+        AddAllItemsToTable(doctors);
+      });
+
+    }
+    window.onload = GetAllDataRealtime;
+  </script>
+</body>
+</html>
