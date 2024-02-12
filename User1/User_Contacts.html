@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .message1 {
+        color: white;
+        text-shadow: 0 0 4px black, 0 0 5px black;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 40px;
+      }
+      .message2 {
+        color: white;
+        text-shadow: 0 0 4px black, 0 0 5px black;
+        text-align: center;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .message3 {
+        /*CONTACTS*/
+        color: white;
+        text-align: left;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding-left: 30px;
+        font-size: 25px;
+        font-weight: 400;
+      }
+
+      .message4 {
+        /*E Mall, Cor Leon Kilat St And...*/
+        color: white;
+        text-align: right;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding-right: 40px;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .message5 {
+        /*(032) 253 0228*/
+        color: white;
+        text-align: left;
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding-left: 36px;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .message6 {
+        /*rajahtupasms@rajah.tupas.com*/
+        color: white;
+        text-align: left;
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        padding-left: 36px;
+        font-size: 15px;
+        font-weight: 400;
+      }
+
+      .message7 {
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding-left: 15px;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-weight: 20px;
+        font-size: 20px;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+      }
+
+      .rectangle .message4 .fa {
+        padding-right: 23.5px;
+        font-size: 15px;
+      }
+
+      .rectangle .message5 .fa {
+        padding-right: 20px;
+        font-size: 15px;
+      }
+
+      .rectangle .message6 .fa {
+        padding-right: 20px;
+        font-size: 15px;
+      }
+
+      .contacts-name {
+        width: 500px;
+        position: absolute;
+        top: 450px;
+        left: 25%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 400px;
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .contacts-name input {
+        width: 100%;
+        padding: 5px 5px;
+        border-radius: 5px;
+        outline: none;
+        font-size: large;
+        color: #0c2830;
+        padding-left: 10px;
+      }
+
+      .contacts-name label {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400px;
+        color: black;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .contacts-email {
+        width: 500px;
+        position: absolute;
+        top: 550px;
+        left: 25%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 400px;
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .contacts-email input {
+        width: 100%;
+        padding: 5px 5px;
+        border-radius: 5px;
+        outline: none;
+        font-size: large;
+        color: #0c2830;
+        padding-left: 10px;
+      }
+
+      .contacts-email label {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400px;
+        color: black;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .contacts-phone {
+        width: 500px;
+        position: absolute;
+        top: 650px;
+        left: 25%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 400px;
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .contacts-phone input {
+        width: 100%;
+        padding: 5px 5px;
+        border-radius: 5px;
+        outline: none;
+        font-size: large;
+        color: #0c2830;
+        padding-left: 10px;
+      }
+
+      .contacts-phone label {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400px;
+        color: black;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .contacts-message {
+        width: 500px;
+        overflow-x: hidden;
+        position: absolute;
+        top: 810px;
+        left: 29.5%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+
+        padding: 10px;
+        height: auto;
+        border-radius: 10px;
+      }
+
+      .contacts-message textarea {
+        width: 100%;
+        height: 150px;
+        padding: 5px 5px;
+        border-radius: 5px;
+        outline: none;
+        font-size: large;
+        color: #0c2830;
+        padding-left: 10px;
+        border: 1px solid black;
+        resize: none;
+      }
+
+      .contacts-message label {
+        width: 100%;
+        font-size: 20px;
+        font-weight: 400px;
+        color: black;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .rectangle {
+        position: absolute;
+        width: 600px;
+        height: 165px;
+        transform: translate(-50%, -50%);
+        left: 75%;
+        top: 80%;
+        background: #184f6f;
+      }
+      .rectangle1 {
+        box-sizing: border-box;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        left: 0px;
+        top: 1000px;
+
+        background: #184f6f;
+
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      img {
+        background-position: center;
+      }
+
+      .container {
+        position: absolute;
+        width: 80%;
+        height: 100px;
+        left: 240px;
+        top: 20px;
+        background: #f1f1f1;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        border-radius: 10px;
+        overflow-y: scroll;
+        padding-bottom: 600px;
+      }
+
+      .submit-button {
+        position: absolute;
+        transform: translate(-50%, -50%);
+        left: 58%;
+        top: 878px;
+        background: #184f6f;
+        width: 100px;
+        color: white;
+        border-color: white;
+        font-size: 20px;
+      }
+      .submit-button:hover {
+        background: #2875a2;
+        cursor: pointer;
+      }
+
+      .sidebar_menu .menu .Contacts-sidebar {
+        border-left: 5px solid #fff;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_box">
+      <div class="container">
+        <div class="overlay" id="divOne">
+          <div class="wrapper2">
+            <h2>Are you sure to signout?</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              <div class="container1">
+                <form>
+                  <button class="yes-button">Yes</button>
+                  <button class="no-button">No</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1 class="message1">CONNECT WITH US</h1>
+        <p class="message2">
+          Have any questions for us? We'd love to hear from you
+        </p>
+        <img src="corridor-hospital.jpg" width="100%" />
+        <div class="contacts-name">
+          <label> Name </label>
+          <input
+            type="text"
+            class="input"
+            placeholder="e.g. Carlo Dominguez Mozar"
+          />
+        </div>
+        <div class="contacts-email">
+          <label> Email </label>
+          <input type="text" class="input" placeholder="example@gmail.com" />
+        </div>
+        <div class="contacts-phone">
+          <label> Phone </label>
+          <input type="text" class="input" placeholder="09XX-XXX-XXXX" />
+        </div>
+        <div class="contacts-message">
+          <label> Message </label>
+          <textarea
+            style="font-size: 20px"
+            rows="4"
+            cols="60"
+            class="input"
+            placeholder="Tell us your message"
+          ></textarea>
+        </div>
+        <div class="rectangle">
+          <h1 class="message3">CONTACTS</h1>
+          <p class="message4">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            E Mall, Cor Leon Kilat St And N. Bacalso Ave, Cebu City, 6000 Cebu
+          </p>
+          <p class="message5">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            (032) 253 0228
+          </p>
+          <p class="message6">
+            <i class="fa fa-at" aria-hidden="true"></i>
+            rajahtupasms@rajah.tupas.com
+          </p>
+        </div>
+        <a href="#"><button class="submit-button">Submit</button></a>
+        <div class="rectangle1">
+          <p class="message7">© RAJAH TUPAS MEDICAL SERVICES 2022</p>
+        </div>
+      </div>
+
+      <div class="sidebar_menu">
+        <div class="logo">
+          <a href="#">Rajah Tupas</a>
+        </div>
+        <div class="menu">
+          <ul>
+            <li>
+              <i class="fas fa-home"></i>
+              <a href="User_Homepage.html">Home</a>
+            </li>
+
+            <li>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <a href="User_Profile.html">My Profile</a>
+            </li>
+
+            <li>
+              <i class="fa fa-heartbeat" aria-hidden="true"></i>
+              <a href="User_Services.html">Services</a>
+            </li>
+            <li class="Contacts-sidebar">
+              <i class="fas fa-phone-volume"></i>
+              <a href="User_Contacts.html">Contacts</a>
+            </li>
+            <li>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <a href="User_Schedules.html">Schedules</a>
+            </li>
+            <li>
+              <i class="fas fa-question-circle"></i>
+              <a href="User_AboutUs.html">About Us</a>
+            </li>
+            <li>
+              <i class="fa fa-sign-out"></i>
+              <a href="#divOne">Signout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="facebook">
+          <ul>
+            <a href="https://www.facebook.com/RTMSCebu"
+              ><i class="fab fa-facebook-f"> facebook</i></a
+            >
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

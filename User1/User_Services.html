@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style1.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      .rectangle7 {
+        box-sizing: border-box;
+        text-align: center;
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        left: 0px;
+        top: 850px;
+
+        background: #184f6f;
+
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .services_header {
+        background-position: center;
+        height: 340px;
+        object-fit: cover;
+        object-position: center center;
+      }
+      
+      .services_img_left {
+        width: 20%;
+        padding-top: 10px;
+        margin-left: 25px;
+      }
+
+      .services_img_right {
+        width: 20%;
+        padding-top: 10px;
+        margin-left: 380px;
+      }
+
+      .message12 {
+        /*© RAJAH TUPAS MEDICAL SERVICES 2022*/
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding-left: 15px;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-weight: 20px;
+        font-size: 20px;
+        font-family: "Poppins", sans-serif;
+        text-decoration: none;
+      }
+
+      .container {
+        position: absolute;
+        width: 80%;
+        height: 100px;
+        left: 240px;
+        top: 50px;
+        background: #f1f1f1;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        border-radius: 10px;
+        overflow-y: scroll;
+        padding-bottom: 550px;
+      }
+
+      .service_txt {
+        color: #184f6f;
+        text-shadow: 0 0 4px white, 0 0 5px white;
+        text-align: center;
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 40px;
+        cursor: default;
+      }
+      .subtxt_service {
+        color: #184f6f;
+        text-shadow: 0 0 4px white, 0 0 5px white;
+        text-align: center;
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        cursor: default;
+        font-size: 20px;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .serviceWord_wrapper{
+        position: absolute;
+        width: 20%;
+        height: 60px;
+        transform: translate(-50%, -50%);
+        left: 50%;
+        top: 61.5%;
+        border-radius: 10px;
+        background: #184f6f;
+      }
+
+      .serviceWord{
+        color: white;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: default;
+      }
+
+      .service1_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        left: 0px;
+        top: 400px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv1 a {
+        /*Obstetric Ultrasonography*/
+        color: #184f6f;
+        text-align: right;
+        padding-right: 25px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      
+
+      
+
+      .service2_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        left: 0px;
+        top: 550px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv2 a{
+        /*ECG*/
+        color: #184f6f;
+        text-align: right;
+        padding-right: 35px;
+        position: absolute;
+        top: 40%;
+        left: 22%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      .service3_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        left: 0px;
+        top: 700px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv3 a{
+        /*Medical Consultations*/
+        color: #184f6f;
+        text-align: right;
+        padding-right: 40px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      .service4_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        right: 0px;
+        top: 400px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv4 a{
+        /*X-RAY*/
+        color: #184f6f;
+        text-align: left;
+        padding-left: 180px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      .service5_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        right: 0px;
+        top: 550px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv5 a{
+        /*Laboratory Examinations*/
+        color: #184f6f;
+        text-align: right;
+        padding-right: 150px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      .service6_wrapper{
+        box-sizing: border-box;
+        position: absolute;
+        width: 500px;
+        height: 120px;
+        right: 0px;
+        top: 700px;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+
+        background: #ffffff;
+        border: 1px solid #184f6f;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .txt_Serv6 a{
+        /*Vaccination*/
+        color: #184f6f;
+        text-align: left;
+        padding-left: 150px;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 25px;
+        font-weight: 400px;
+        text-decoration: none;
+        pointer-events: none;
+      }
+
+      .serv_subtxt_left{
+        color: black;
+        text-align: center;
+        padding-left: 100px;
+        position: absolute;
+        top: 73%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 15px;
+        font-weight: normal;
+        text-decoration: none;
+      }
+
+      .serv_subtxt_right{
+        color: black;
+        text-align: center;
+        padding-right: 45px;
+        position: absolute;
+        top: 73%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        font-size: 15px;
+        font-weight: normal;
+        text-decoration: none;
+      }
+
+      .service1_wrapper:hover {
+        background: #95d2f6;
+      }
+      .service2_wrapper:hover {
+        background: #95d2f6;
+      }
+      .service3_wrapper:hover {
+        background: #95d2f6;
+      }
+      .service4_wrapper:hover {
+        background: #95d2f6;
+      }
+      .service5_wrapper:hover {
+        background: #95d2f6;
+      }
+      .service6_wrapper:hover {
+        background: #95d2f6;
+      }
+
+      .sidebar_menu .menu .Services-sidebar {
+        border-left: 5px solid #fff;
+        box-shadow: 0 0 4px rgba(255, 255, 255, 0.5);
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="main_box">
+      <div class="container">
+        <div class="overlay" id="divOne">
+          <div class="wrapper2">
+            <h2>Are you sure to signout?</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content">
+              <div class="container1">
+                <form>
+                  <button class="yes-button">Yes</button>
+                  <button class="no-button">No</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <img class="services_header" src="services-picture4.jpg" width="100%"/>
+        <h1 class="service_txt">HOW CAN WE HELP YOU?</h1>
+        <p class="subtxt_service">We offer different kinds of services for different special kinds of healthcare</p>
+        <div class="rectangle7">
+          <p class="message12">© RAJAH TUPAS MEDICAL SERVICES 2022</p>
+        </div>
+        <div class="serviceWord_wrapper">
+          <p class="serviceWord">SERVICES</p>
+        </div>
+        <div class="service1_wrapper">
+          <p class="txt_Serv1">
+            <a href="#"></a>
+            <a href="Obstetric.html">Obstetric Ultrasonography</a>
+            <h1 class="serv_subtxt_left">Mon - Fri (9AM-12PM | 3PM-5PM)</h1>
+          </p>
+          <img src="baby.png" class="services_img_left" />
+        </div>
+        <div class="service2_wrapper">
+          <p class="txt_Serv2">
+            <a href="#"></a>
+            <a href="Obstetric.html">ECG</a>
+            <h1 class="serv_subtxt_left">Mon - Sat (9AM - 6PM)</h1>
+          </p>
+          <img src="ecg.png" class="services_img_left" />
+        </div>
+        <div class="service3_wrapper">
+          <p class="txt_Serv3">
+            <a href="#"></a>
+            <a href="Obstetric.html">Medical Consultations</a>
+            <h1 class="serv_subtxt_left">Mon - Sat (9AM - 6PM)</h1>
+          </p>
+          <img src="stethoscope.png" class="services_img_left" />
+        </div>
+        <div class="service4_wrapper">
+          <p class="txt_Serv4">
+            <a href="#"></a>
+            <a href="Obstetric.html">X-RAY</a>
+            <h1 class="serv_subtxt_right">Mon - Sat (9AM - 5PM)</h1>
+          </p>
+          <img src="x-rays.png" class="services_img_right" />
+        </div>
+        <div class="service5_wrapper">
+          <p class="txt_Serv5">
+            <a href="#"></a>
+            <a href="Obstetric.html">Laboratory Examinations</a>
+            <h1 class="serv_subtxt_right">Mon - Fri (9AM - 5PM)</h1>
+          </p>
+          <img src="medical-laboratory.png" class="services_img_right" />
+        </div>
+        <div class="service6_wrapper">
+          <p class="txt_Serv6">
+            <a href="#"></a>
+            <a href="Obstetric.html">Vaccination</a>
+            <h1 class="serv_subtxt_right">Mon - Sat (9AM - 6PM)</h1>
+          </p>
+          <img src="vaccine.png" class="services_img_right" />
+        </div>
+      </div>
+      <input type="checkbox" id="check" />
+      <div class="sidebar_menu">
+        <div class="logo">
+          <a href="#">Rajah Tupas</a>
+        </div>
+        <div class="menu">
+          <ul>
+            <li>
+              <i class="fas fa-home"></i>
+              <a href="User_Homepage.html">Home</a>
+            </li>
+
+            <li>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <a href="User_Profile.html">My Profile</a>
+            </li>
+
+            <li class="Services-sidebar">
+              <i class="fa fa-heartbeat" aria-hidden="true"></i>
+              <a href="User_Services.html">Services</a>
+            </li>
+            <li>
+              <i class="fas fa-phone-volume"></i>
+              <a href="User_Contacts.html">Contacts</a>
+            </li>
+            <li>
+              <i class="fa fa-calendar-check-o" aria-hidden="true"></i>
+              <a href="User_Schedules.html">Schedules</a>
+            </li>
+            <li>
+              <i class="fas fa-question-circle"></i>
+              <a href="User_AboutUs.html">About Us</a>
+            </li>
+            <li>
+              <i class="fa fa-sign-out"></i>
+              <a href="#divOne">Signout</a>
+            </li>
+          </ul>
+        </div>
+        <div class="facebook">
+          <ul>
+            <a href="https://www.facebook.com/RTMSCebu"><i class="fab fa-facebook-f"> facebook</i></a>
+          </ul>
+        </div>
+      
+      </div>
+    </div>
+  </body>
+</html>

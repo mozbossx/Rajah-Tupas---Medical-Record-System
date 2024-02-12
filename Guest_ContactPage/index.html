@@ -1,0 +1,116 @@
+<html lang="en">
+          <head>
+            <meta charset="utf-8">
+            <title>Contact Page</title>
+            <meta name="description" content="Figma htmlGenerator">
+            <meta name="author" content="htmlGenerator">
+            <link href="https://fonts.googleapis.com/css?family=Habibi&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Inter&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Actor&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="styles.css">
+            <style>
+              body {background: #E5E5E5; }
+            </style>
+          </head>
+          <body>
+            <div class=e252_3091>
+              <div  class="e281_35"></div>
+              <div class=e252_3092>
+                <div  class="e252_3094"></div>
+                <span  class="e252_3095">RAJAH TUPAS MEDICAL SERVICES</span>
+                <a href="/Guest/Guest_HomePage/index.html"  class="e252_3096">HOME</a>
+                <a href="/Guest/Guest_ContactPage/index.html"  class="e252_3097">CONTACT</a>
+                <a href="/Guest/Guest-ServicesPage/Guest_Services.html"  class="e252_3098">AVAILABLE SERVICES</a>
+                <a href="/Guest/Guest-AboutPage/Guest_AboutUs.html"  class="e252_3099">ABOUT</a>
+                <a href="/User Credentials/LogIn/login.html"  class="elogin">LOGIN</a>
+                <a href="/User Credentials/SignUp/Sign Up Page.html"  class="esignup">SIGN UP</a>
+                <div  class="e252_3101"></div>
+                <span  class="e252_3100">| </a>
+              </div>
+              <div class=e252_3103>
+                <div  class="e252_3104"></div>
+                <span  class="e252_3105">© RAJAH TUPAS MEDICAL SERVICES 2022</span>
+              </div>
+              <span  class="e282_37">CONNECT WITH US</span>
+              <span  class="e282_38">Have any questions for us? We’d love to hear from you</span>
+              <span  class="e282_51">Name</span>
+              <span  class="e282_53">Email</span>
+              <span  class="e282_56">Phone</span>
+              <span  class="e282_59">Message</span>
+              <textarea rows="5" type="text"  class="e282_61" id="idmessage" placeholder="Tell us your message" required></textarea>
+              <input type="text"  class="e501_16" id="idname" placeholder="e.g. Topias Taavitsainen" required>
+              <input type="text"  class="e524_2"  id="idphone" placeholder="09XX-XXX-XXXX" required>
+              <input type="email" class="e524_3"  id="idemail" placeholder="example@gmail.com" required>
+              <div  class="e282_62"></div>
+              <span  class="e282_84">CONTACTS</span>
+              <span  class="e282_81">E Mall, Cor Leon Kilat St And N. Bacalso Ave, Cebu City, 6000 Cebu</span>
+              <span  class="e282_82">(032) 253 0228</span>
+              <span  class="e282_83">rajahtupasms@rajah.tupas.com</span>
+              <div class=e283_89></div>
+              <div class=ephone></div>
+              <div class=esend></div>
+            <div  class="e491_2" ></div>
+            <form id="submitbtn">
+              <button  class="e491_3" type="submit" id="subbtn">SUBMIT</button>
+            </form>
+          </div>
+          <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+            import {
+              getDatabase,
+              ref,
+              set,
+            } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+
+            const firebaseConfig = {
+              apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+              authDomain: "admin-data-ad9df.firebaseapp.com",
+              databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+              projectId: "admin-data-ad9df",
+              storageBucket: "admin-data-ad9df.appspot.com",
+              messagingSenderId: "89242972927",
+              appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+              measurementId: "G-94LFR4H8C1",
+            };
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const db = getDatabase(app);
+
+            document.getElementById("submitbtn").addEventListener("submit", (e) => {
+              const name_input = document.getElementById("idname").value;
+              const email_input = document.getElementById("idemail").value;
+              const phone_input = document.getElementById("idphone").value;
+              const message_input = document.getElementById("idmessage").value;
+              
+              e.preventDefault();
+              
+              writeUserData(
+                name_input,
+                email_input,
+                phone_input,
+                message_input
+              );
+              alert("Successfully added!");
+            });
+
+            function writeUserData(
+              name_input,
+              email_input,
+              phone_input,
+              message_input
+            ) {
+              set(ref(db, "Contacts/" + name_input), {
+                Name: name_input,
+                Email: email_input,
+                Phone_Number: phone_input,
+                Message: message_input,
+              });
+            }
+          </script>
+          </body>
+          </html>
