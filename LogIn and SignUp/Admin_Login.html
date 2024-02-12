@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAJAH TUPAS | Admin Login</title>
+
+  <style>
+    body {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #141410;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 35%;
+      height: 40px;
+      padding: 15px 20px;
+      margin: 15px 0;
+      display: inline-block;
+      box-sizing: border-box;
+      margin-left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    h1 {
+      position: fixed;
+      margin-left: 50%;
+      top: 265px;
+      transform: translate(-50%, -50%);
+      font-weight: bolder;
+      font-size: 30px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    button {
+      background-color: #f0efed;
+      padding: 15px 20px;
+      margin: 5px 0;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 5px;
+      position: absolute;
+      margin-left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    button:hover {
+      opacity: 0.8;
+      box-shadow: none;
+      font-weight: bold;
+    }
+
+    .position {
+      margin-left: 50%;
+      margin-right: 15%;
+      margin-top: -50px;
+      transform: translate(-50%, -50%);
+      text-align: right;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      font-size: smaller;
+    }
+
+    h4 {
+      position: absolute;
+      margin-left: 50%;
+      margin-right: 15%;
+      margin-top: 55px;
+      transform: translate(-50%, -50%);
+      font-size: small;
+      font-weight: lighter;
+    }
+  </style>
+
+  <body>
+    <h1 style="color: #333333">Admin Login</h1>
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+    <form id="floating">
+      <input
+        type="text"
+        placeholder="Email or Username"
+        name="name"
+        id="floatingEmail"
+        required
+      /><br />
+      <input
+        type="password"
+        placeholder="Password"
+        name="psw"
+        id="floatingPassword"
+        required
+      /><br /><br />
+      <br /><button type="submit">Login</button>
+    </form>
+
+    <div class="position">
+      <span class="psw"
+        ><a href="#" style="color: #1e1e1e"> Forgot password?</a></span
+      >
+    </div>
+    <br /><br /><br />
+    <h4 style="color: #333333">
+      Don't have an account yet?
+      <a
+        href="/Admin/LogIn and SignUp/Admin_SignUp.html"
+        style="color: #f0efed"
+        >Create an Account</a
+      >
+    </h4>
+    
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+      import { getDatabase,ref,update} from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+      import {
+        getAuth,
+        signInWithEmailAndPassword,
+
+      } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+        authDomain: "admin-data-ad9df.firebaseapp.com",
+        databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+        projectId: "admin-data-ad9df",
+        storageBucket: "admin-data-ad9df.appspot.com",
+        messagingSenderId: "89242972927",
+        appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+        measurementId: "G-94LFR4H8C1",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      const database = getDatabase(app);
+
+      document.getElementById("floating").addEventListener("submit", (e) => {
+        var email = document.getElementById("floatingEmail").value;
+        var password = document.getElementById("floatingPassword").value;
+        e.preventDefault();
+
+        signInWithEmailAndPassword(auth, email, password)
+          .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+
+            const dt = new Date();
+
+            update(ref(database, "Admins_login/" + user.uid), {
+              email: email,
+              last_login: dt,
+            });
+            alert("Signed in!");
+            setTimeout(function(){
+                    window.location.replace("/Admin/Homepage/Admin_Homepage.html");
+                }, 1000)
+          })
+          .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+
+            alert(errorMessage);
+            // ..
+          });
+      });
+    </script>
+  </body>
+</html>

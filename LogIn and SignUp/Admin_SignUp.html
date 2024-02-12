@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAJAH TUPAS | Admin Sign-up</title>
+
+  <style>
+    a:link{
+      color: black;
+      text-decoration: none;
+    }
+    body {
+      background-image: url("Desktop - 2.png");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-color: #141410;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 35%;
+      height: 40px;
+      padding: 15px 20px;
+      margin: 15px 0;
+      display: inline-block;
+      box-sizing: border-box;
+      margin-left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .choice {
+      width: 15%;
+      height: 40px;
+      padding: 10px 15px;
+      margin: 15px 0;
+      display: inline-block;
+      box-sizing: border-box;
+      margin-left: 40%;
+      transform: translate(-50%, -50%);
+    }
+
+    input[type="tel"] {
+      position: absolute;
+      width: 15%;
+      height: 40px;
+      padding: 15px 20px;
+      margin: 15px 0;
+      display: inline-block;
+      box-sizing: border-box;
+      margin-left: 5%;
+      transform: translate(-50%, -50%);
+    }
+
+    h2 {
+      position: fixed;
+      text-align: center;
+      margin-left: 50%;
+      margin-top: 200px;
+      transform: translate(-50%, -50%);
+      font-weight: bolder;
+      font-size: 30px;
+      font-family: Georgia, "Times New Roman", Times, serif;
+    }
+
+    button {
+      background-color: #f0efed;
+      padding: 15px 20px;
+      margin: 5px 0;
+      border: none;
+      cursor: pointer;
+      width: 15%;
+      border-radius: 5px;
+      margin-top: 40px;
+      position: absolute;
+      margin-left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    button:hover {
+      opacity: 0.8;
+      box-shadow: none;
+      font-weight: bold;
+    }
+  </style>
+
+  <body>
+    <br />
+    <h2 style="color: #333333">Account Sign-up</h2>
+
+    <form id="button-create">
+      <div class="forms">
+        <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+        <input
+          type="text"
+          placeholder="Email Address"
+          name="email"
+          id="floatingEmail"
+          required
+        />
+        <input type="text" placeholder="Username" name="name" id="username" required />
+        <input
+          type="password"
+          placeholder="Password"
+          name="psw"
+          id="floatingPassword"
+          required
+        />
+        <input
+          type="password"
+          placeholder="Re-enter Password"
+          name="rpsw"
+          id="password"
+          required
+        />
+        <select required id="group"class="choice">
+          <option value="">- Select User Group -</option>
+          <option value="admin">Administrator</option>
+          <option value="doc">Doctor</option>
+          <option value="nurse">Nurse</option>
+          <option value="clerk">Clerk</option>
+        </select>
+        <input type="tel" placeholder="Phone Number" name="num" required />
+      </div>
+      <button type="submit"><a href="/Admin/LogIn and SignUp/Admin_Login.html" font-color="black" style="text-decoration:none" >Account</a> </button>
+    </form>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-analytics.js";
+      import { getDatabase,ref,update } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-database.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+      } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-auth.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyAfQp3i_xOEH2LAmk9GwtUaR0Si7AhZQdo",
+        authDomain: "admin-data-ad9df.firebaseapp.com",
+        databaseURL: "https://admin-data-ad9df-default-rtdb.firebaseio.com",
+        projectId: "admin-data-ad9df",
+        storageBucket: "admin-data-ad9df.appspot.com",
+        messagingSenderId: "89242972927",
+        appId: "1:89242972927:web:cec61c1f1dd020470792ca",
+        measurementId: "G-94LFR4H8C1",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      const database = getDatabase(app);
+
+      document.getElementById("button-create").addEventListener("submit", (e) => {
+          var email = document.getElementById("floatingEmail").value;
+          var password = document.getElementById("floatingPassword").value;
+          var username = document.getElementById("username").value;
+          e.preventDefault();
+            
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in
+              const user = userCredential.user;
+
+              update(ref(database, "infos_admin/" + user.uid), {
+                email: email,
+                username: username,
+            
+              });
+              alert("user created");
+              // ...
+            })
+            .catch((error) => {
+              const errorCode = error.code;
+              const errorMessage = error.message;
+
+              alert(errorMessage);
+              // ..
+            });
+        });
+    </script>
+  </body>
+</html>
